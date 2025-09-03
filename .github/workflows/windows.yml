@@ -1,6 +1,6 @@
 # This workflow builds the PawSense executable on Windows using PyInstaller and uploads it as an artifact.
 
-name: Python application
+name: Python application (windows)
 
 on:
     push:
