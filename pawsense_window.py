@@ -3,7 +3,7 @@ import tkinter.font as tkfont
 from tkinter import ttk
 
 class PawSenseWindow:
-    def __init__(self, on_close_callback=None, on_terminate_callback=None):
+    def __init__(self, on_close_callback, on_terminate_callback):
         self.on_close_callback = on_close_callback
         self.on_terminate_callback = on_terminate_callback
         self.window = tk.Tk()
@@ -78,29 +78,9 @@ class PawSenseWindow:
             self.on_window_close()
             
         if text.lower() == "terminate":
-            if self.on_terminate_callback:
-                self.on_terminate_callback()
-            else:
-                # Fallback to regular close if no terminate callback
-                self.on_window_close()
+            self.on_terminate_callback()
     
     def on_window_close(self):
         """Handle window close event"""
         self.hide()
-        if self.on_close_callback:
-            self.on_close_callback()
-
-def run_standalone():
-    """Run the window standalone for testing"""
-    root = tk.Tk()
-    root.withdraw()
-    
-    def dummy_callback():
-        root.quit()
-    
-    app = PawSenseWindow(dummy_callback)
-    app.show()
-    root.mainloop()
-
-if __name__ == "__main__":
-    run_standalone()
+        self.on_close_callback()
