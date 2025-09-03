@@ -1,6 +1,5 @@
 import pystray
 import threading
-import time
 import random
 import tkinter as tk
 from PIL import Image, ImageDraw
